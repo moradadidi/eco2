@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/payement.css">
+    <link rel="stylesheet" href="CSS/styles.css">
+
+    <title>Document</title>
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <h1 id="logo">monasabat</h1>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+      <ul>
+        <li><button id="login" class="acc">login</button></li>
+        <li><button id="sign_up" class="acc">sign up</button></li>
+      </ul>
+    </div>
+  </nav>
+    <div class="containe">
+        <h1>Payment</h1>
+        <div class="form-group">
+          <label for="nom_proprietaire">nom</label>
+          <input type="text" id="nom_proprietaire" name="nom_proprietaire" required />
+        </div>
+        <div class="form-group">
+          <label for="prenom_proprietaire">prenom</label>
+          <input type="text" id="prenom_proprietaire" name="prenom_proprietaire" required />
+        </div>
+        
+        <div class="form-group">
+          <label for="card-type">Type payement</label>
+          <select id="card-type" name="card-type">
+            <option value="paypal">PayPal</option>
+            <option value="binance">Binance</option>
+            <option value="banque">compte bancaire</option>
+          </select>
+        </div>
+        <div class="form-group" id="payPal" style="display: none;">
+          <label for="adresse_paypal" class="adresse_paypal">PayPal Address</label>
+          <input type="text" id="adresse_paypal" name="adresse_paypal" class="paypal-input" required />
+        </div>
+
+        <div class="form-group" id="binance" style="display: none;">
+            <label for="adresse_binance" class="adresse_paypal">binance Address</label>
+            <input type="text" id="adresse_binance" name="adresse_binance" class="binance" required />
+          </div>
+        <div class="form-group" id="banque" style="display: none;">
+          <label for="card_number" class="rib">card number</label>
+          <input type="text" id="card_number" name="card_number" class="banque-input" required />
+          <label for="expiration_date" class="rib">expiration date</label>
+          <input type="date" id="expiration_date" name="expiration_date" class="banque-input" required />
+          <label for="CVV" class="rib">CVV</label>
+          <input type="number" id="CVV" name="CVV" class="banque-input" required />
+          <label for="postal_code" class="rib">postal code</label>
+          <input type="number" id="postal_code" name="postal_code" class="banque-input" required />
+        </div>
+        
+          
+          
+          <button type="submit" >Submit Payment
+          </button>
+        </form>
+      </div>
+
+ <script>
+  
+const paypal = document.getElementById('payPal');
+const binance = document.getElementById('binance');
+const banque = document.getElementById('banque');
+
+const cardTypeSelect = document.querySelector('#card-type');
+cardTypeSelect.addEventListener('change', (e) => {
+  if (e.target.value === 'paypal') {
+    paypal.style.display = 'block';
+    binance.style.display = 'none';
+    banque.style.display = 'none';
+
+  } else if (e.target.value === 'binance') {
+    paypal.style.display = 'none';
+    binance.style.display = 'block';
+    banque.style.display = 'none';
+  } else if (e.target.value === 'banque') {
+    paypal.style.display = 'none';
+    binance.style.display = 'none';
+    banque.style.display = 'block';
+  }
+});
+ </script>
+      
+      <script src="script.js"></script>
+</body>
+</html>
